@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "401122338694",
+    "firebase_url": "https://boltaction-f356b.firebaseio.com",
+    "project_id": "boltaction-f356b",
+    "storage_bucket": "boltaction-f356b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401122338694:android:02433b7dd0fded64",
+        "android_client_info": {
+          "package_name": "com.hackumass.med.boltaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401122338694-qab6su1009rcvl8e116jthr846o514ut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackumass.med.boltaction",
+            "certificate_hash": "37cf91ce2e6f31b900981bdee027dadbce40adac"
+          }
+        },
+        {
+          "client_id": "401122338694-cp44vjol81spe0ro1jad5fcob03s2s70.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZPNr1eeIh2laRs7n2EWXgOrZvBB97CD0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401122338694-cp44vjol81spe0ro1jad5fcob03s2s70.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
