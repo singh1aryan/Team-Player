@@ -19,7 +19,11 @@
         </activity>
         <activity android:name=".SoccerActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".IntroActivity"></activity>
+        <activity android:name=".IntroActivity" />
+        <activity
+            android:name=".Soccer2Activity"
+            android:label="@string/title_activity_soccer2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

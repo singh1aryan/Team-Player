@@ -27,15 +27,17 @@
 
                 <EditText
                     android:id="@+id/email"
+                    android:focusableInTouchMode="false"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/user"
                     android:drawablePadding="10dp"
-                    android:hint="Email" />
+                    android:hint="Name" />
 
                 <EditText
                     android:id="@+id/age"
                     android:layout_width="350dp"
+                    android:focusableInTouchMode="false"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/age"
                     android:drawablePadding="10dp"
