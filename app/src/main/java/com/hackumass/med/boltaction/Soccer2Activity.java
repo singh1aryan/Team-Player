@@ -20,7 +20,7 @@ public class Soccer2Activity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Added to the SoccerGround team", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Added to the Ground team", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });

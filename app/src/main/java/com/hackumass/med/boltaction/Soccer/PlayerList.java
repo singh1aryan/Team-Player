@@ -37,8 +37,8 @@ public class PlayerList extends ArrayAdapter<Player> {
 
         Player player = players.get(position);
         textViewName.setText(player.name);
-        textViewGenre.setText(textViewName.getText() + " " + player.age);
-        textViewGenre1.setText(textViewName.getText() + " " + player.level);
+        textViewGenre.setText(textViewGenre.getText() + " " + player.age);
+        textViewGenre1.setText(textViewGenre1.getText() + " " + player.level);
 
         return listViewItem;
     }

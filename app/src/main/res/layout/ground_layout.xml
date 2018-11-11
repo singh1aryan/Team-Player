@@ -23,7 +23,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/bat1"
+                android:src="@drawable/field"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"/>
@@ -38,19 +38,19 @@
                     android:id="@+id/textViewName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Player name"
+                    android:text="Ground name"
                     android:textSize="15sp"
                     android:textAllCaps="true"
                     android:fontFamily="sans-serif-condensed"
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/gender"
+                    android:id="@+id/textViewGenre1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="Gender: "
+                    android:text="Capacity: "
                     android:textSize="16sp" />
 
 
@@ -67,19 +67,19 @@
                     android:id="@+id/textViewGenre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Age:"
-                    android:textSize="15sp"
+                    android:text="Time:"
+                    android:textSize="20sp"
                     android:fontFamily="sans-serif-condensed"
                     android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/textViewGenre1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="Skill Level:"
-                    android:textSize="16sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/textViewGenre1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="7dp"-->
+                    <!--android:fontFamily="sans-serif-condensed"-->
+                    <!--android:text="Capacity:"-->
+                    <!--android:textSize="16sp" />-->
 
 
             </LinearLayout>

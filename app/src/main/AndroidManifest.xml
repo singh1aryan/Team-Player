@@ -23,7 +23,9 @@
         <activity
             android:name=".Soccer2Activity"
             android:label="@string/title_activity_soccer2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".PlayerActivity" />
+        <activity android:name=".GroundActivity"></activity>
     </application>
 
 </manifest>

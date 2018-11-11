@@ -1,9 +1,11 @@
 package com.hackumass.med.boltaction;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -12,9 +14,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hackumass.med.boltaction.Soccer.Ground;
+import com.hackumass.med.boltaction.Soccer.GroundList;
 import com.hackumass.med.boltaction.Soccer.Player;
 import com.hackumass.med.boltaction.Soccer.PlayerList;
-import com.hackumass.med.boltaction.Soccer.SoccerGround;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,23 +27,26 @@ public class SoccerActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference myRef = database.getReference("message");
 
-    Button button;
-    private DatabaseReference playersDatabase;
+    //Button button;
     private DatabaseReference groundsDatabase;
 
-    List<Player> players;
-    ListView listViewPlayers;
+    List<Ground> grounds;
+    ListView listViewGrounds;
+    FloatingActionButton button;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soccer);
+        getSupportActionBar().setTitle("Grounds");
 
-        listViewPlayers = findViewById(R.id.listViewPlayers);
-        players = new ArrayList<>();
+        listViewGrounds = findViewById(R.id.listViewPlayers);
+        grounds = new ArrayList<>();
 
-        // SoccerGround players would be the name of that
-        playersDatabase = FirebaseDatabase.getInstance().getReference("Players");
+        // Ground players would be the name of that
+        groundsDatabase = FirebaseDatabase.getInstance().getReference("Grounds");
 //        groundsDatabase = playersDatabase.child("Soccer_fields");
 
         button = findViewById(R.id.button);
@@ -48,6 +54,24 @@ public class SoccerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addPlayer();
+            }
+        });
+
+        listViewGrounds.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //getting the selected artist
+                Ground ground = grounds.get(i);
+
+                //creating an intent
+                Intent intent = new Intent(getApplicationContext(), GroundActivity.class);
+
+                //putting artist name and id to intent
+                intent.putExtra("id", ground.id);
+                intent.putExtra("name", ground.name);
+
+                //starting the activity with intent
+                startActivity(intent);
             }
         });
     }
@@ -63,13 +87,13 @@ public class SoccerActivity extends AppCompatActivity {
     public void addPlayer(){
 //
 //        String id = groundsDatabase.push().getKey();
-//        SoccerGround ground = new SoccerGround("BU field","2pm");
+//        Ground ground = new Ground("BU field","2pm");
 //        groundsDatabase.child(id).setValue(ground);
 
-        String id = playersDatabase.push().getKey();
-        Player player = new Player("aryan","19","5");
-        playersDatabase.child(id).setValue(player);
-        Toast.makeText(this, "Player added", Toast.LENGTH_LONG).show();
+        String id = groundsDatabase.push().getKey();
+        Ground ground = new Ground("Ground2","2 PM","14",id);
+        groundsDatabase.child(id).setValue(ground);
+        Toast.makeText(this, "Ground added added", Toast.LENGTH_LONG).show();
 
     }
 
@@ -78,25 +102,25 @@ public class SoccerActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         //attaching value event listener
-        playersDatabase.addValueEventListener(new ValueEventListener() {
+        groundsDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 //clearing the previous artist list
-                players.clear();
+                grounds.clear();
 
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //getting artist
-                    Player player = postSnapshot.getValue(Player.class);
+                    Ground ground = postSnapshot.getValue(Ground.class);
                     //adding artist to the list
-                    players.add(player);
+                    grounds.add(ground);
                 }
 
                 //creating adapter
-                PlayerList artistAdapter = new PlayerList(SoccerActivity.this, players);
+                GroundList artistAdapter = new GroundList(SoccerActivity.this, grounds);
                 //attaching adapter to the listview
-                listViewPlayers.setAdapter(artistAdapter);
+                listViewGrounds.setAdapter(artistAdapter);
             }
 
             @Override
