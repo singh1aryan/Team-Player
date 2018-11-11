@@ -45,8 +45,6 @@ public class SoccerActivity extends AppCompatActivity {
 
     public static final String APPLICATION_ID = "YXC33U49BA";
     public static final String API_KEY = "cd9ced8765fbe3de3cef8fb2b56d9ca7";
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference myRef = database.getReference("message");
 
     //Button button;
     private DatabaseReference groundsDatabase;
@@ -55,13 +53,16 @@ public class SoccerActivity extends AppCompatActivity {
     ListView listViewGrounds;
     FloatingActionButton button;
 
+    ArrayAdapter<Ground> arrayAdapter;
 
+    Client client = new Client(APPLICATION_ID, API_KEY);
+    Index index = client.getIndex("grounds");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_soccer);
-        getSupportActionBar().setTitle("Grounds");
+        getSupportActionBar().setTitle("Soccer Grounds");
 
         listViewGrounds = findViewById(R.id.listViewPlayers);
         grounds = new ArrayList<>();
@@ -74,7 +75,7 @@ public class SoccerActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addPlayer();
+                addGround();
             }
         });
 
@@ -100,31 +101,32 @@ public class SoccerActivity extends AppCompatActivity {
 //        InstantSearch helper = new InstantSearchHelper(this, searcher);
 //        helper.search();
 
-        Client client = new Client(APPLICATION_ID, API_KEY);
-        final Index index = client.getIndex("grounds");
+
         List<JSONObject> array = new ArrayList<JSONObject>();
         try {
             array.add(
-                    new JSONObject().put("firstname", "Hockey Field").put("lastname", "Barninger")
+                    new JSONObject().put("firstname", "Hockey Field")
             );
         } catch (JSONException e) {
             e.printStackTrace();
         }
         try {
             array.add(
-                    new JSONObject().put("firstname", "Open Court").put("lastname", "Speach")
+                    new JSONObject().put("firstname", "Open Court")
             );
         } catch (JSONException e) {
             e.printStackTrace();
         }
         try {
             array.add(
-                    new JSONObject().put("firstname", "Mullins Center").put("lastname", "Speach")
+                    new JSONObject().put("firstname", "Mullins Center")
             );
         } catch (JSONException e) {
             e.printStackTrace();
         }
         index.addObjectsAsync(new JSONArray(array), null);
+
+        //Toast.makeText(getApplicationContext(),""+array.size(),Toast.LENGTH_LONG).show();
 
         EditText search = findViewById(R.id.search);
         search.addTextChangedListener(new TextWatcher() {
@@ -140,34 +142,40 @@ public class SoccerActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Query query = new Query(editable.toString())
-                        .setAttributesToRetrieve("firstname")
-                        .setHitsPerPage(50);
-                index.searchAsync(query, new CompletionHandler() {
-                    @Override
-                    public void requestCompleted(JSONObject content, AlgoliaException error) {
-                        // [...]
-                        try {
-                            JSONArray hits = content.getJSONArray("hits");
-                            List<Ground> list = new ArrayList<>();
-                            for(int i=0;i<hits.length();i++){
-                                JSONObject jsonObject = hits.getJSONObject(i);
-                                String firstName = jsonObject.getString("firstname");
-                                for(int j=0;j<grounds.size();j++){
-                                    if(grounds.get(i).name.equals(firstName)){
-                                        list.add(grounds.get(i));
-                                    }
-                                }
-                                ArrayAdapter<Ground> arrayAdapter = new ArrayAdapter<Ground>(
-                                        getApplicationContext(),R.layout.ground_layout,list);
-                                listViewGrounds.setAdapter(arrayAdapter);
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                });
+//                Query query = new Query(editable.toString())
+//                        .setAttributesToRetrieve("firstname")
+//                        .setHitsPerPage(50);
+//                index.searchAsync(query, new CompletionHandler() {
+//                    @Override
+//                    public void requestCompleted(JSONObject content, AlgoliaException error) {
+//                        // [...]
+//                        try {
+//                            if(content!=null){
+//                                JSONArray hits = content.getJSONArray("hits");
+//                            if(content.getJSONArray("hits") != null) {
+//                                List<Ground> list = new ArrayList<>();
+//                                for (int i = 0; i < hits.length(); i++) {
+//                                    if (hits.getJSONObject(i) != null) {
+//                                        JSONObject jsonObject = hits.getJSONObject(i);
+//                                        String firstName = jsonObject.getString("firstname");
+//                                        for (int j = 0; j < grounds.size(); j++) {
+//                                            if (grounds.get(i).name.contains(firstName)) {
+//                                                list.add(grounds.get(i));
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                                GroundList artistAdapter = new GroundList(SoccerActivity.this, list);
+//                                listViewGrounds.setAdapter(artistAdapter);
+//                                artistAdapter.notifyDataSetChanged();
+//                                }
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//                });
             }
         });
 
@@ -183,11 +191,13 @@ public class SoccerActivity extends AppCompatActivity {
 ////        mDatabase.child("users").child(userId).child("username").setValue(name);
 //    }
 
-    public void addPlayer(){
+    public void addGround(){
 //
 //        String id = groundsDatabase.push().getKey();
 //        Ground ground = new Ground("BU field","2pm");
 //        groundsDatabase.child(id).setValue(ground);
+
+
 
         String id = groundsDatabase.push().getKey();
         Ground ground = new Ground("Ground2","2 PM","14",id);
@@ -232,40 +242,74 @@ public class SoccerActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-//            SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//
-//            SearchView search = (SearchView) menu.findItem(R.id.action_search).getActionView();
-//            search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
-//            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//                @Override
-//                public boolean onQueryTextSubmit(String query) {
-//                    Query query1 = new Query(query)
-//                            .setAttributesToRetrieve("name")
-//                            .setHitsPerPage(50);
-//                    index.searchAsync(query1, new CompletionHandler() {
-//                        @Override
-//                        public void requestCompleted(JSONObject content, AlgoliaException error) {
-//                            // [...]
-//                            try {
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                newText = newText.toLowerCase();
+                int a = grounds.size();
+                List<Ground> list = new ArrayList<>();
+                for(int i=0;i<a;i++){
+                    if(grounds.get(i).name.toLowerCase().contains(newText)){
+                        list.add(grounds.get(i));
+                    }
+                }
+//                ArrayAdapter<Ground> arrayAdapter = new ArrayAdapter<Ground>(
+//                        getApplicationContext(), R.layout.ground_layout, list);
+                GroundList artistAdapter = new GroundList(SoccerActivity.this, list);
+                listViewGrounds.setAdapter(artistAdapter);
+                artistAdapter.notifyDataSetChanged();
+                return true;
+//                Query query = new Query(newText)
+//                        .setAttributesToRetrieve("firstname")
+//                        ;
+//                Toast.makeText(getApplicationContext(), query.getLength() + "", Toast.LENGTH_LONG).show();
+//                index.searchAsync(query, new CompletionHandler() {
+//                    @Override
+//                    public void requestCompleted(JSONObject content, AlgoliaException error) {
+//                        // [...]
+//                        try {
+//                            if(content!=null){
 //                                JSONArray hits = content.getJSONArray("hits");
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
+//                                if(content.getJSONArray("hits") != null) {
+//                                    List<Ground> list = new ArrayList<>();
+//                                    for (int i = 0; i < hits.length(); i++) {
+//                                        if (hits.getJSONObject(i) != null) {
+//                                            JSONObject jsonObject = hits.getJSONObject(i);
+//                                            String firstName = jsonObject.getString("firstname");
+//                                            for (int j = 0; j < grounds.size(); j++) {
+//                                                if (grounds.get(i).name.contains(firstName)) {
+//                                                    list.add(grounds.get(i));
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                    GroundList artistAdapter = new GroundList(SoccerActivity.this, list);
+//                                    listViewGrounds.setAdapter(artistAdapter);
+//                                    artistAdapter.notifyDataSetChanged();
+//                                }
 //                            }
-//
+//                            else{
+//                                Toast.makeText(getApplicationContext(), "Null", Toast.LENGTH_LONG).show();
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
 //                        }
-//                    });
-//                    return false;
-//                }
 //
-//                @Override
-//                public boolean onQueryTextChange(String newText) {
-//                    return false;
-//                }
-//            });
-//        }
+//                    }
+//                });
+//                return true;
+            }
+        });
+
+
         return true;
     }
 

@@ -18,7 +18,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="end|bottom"
-        android:src="@drawable/bat"
+        android:src="@drawable/add"
         android:backgroundTint="@color/colorPrimary"
         android:layout_margin="16dp" />
 

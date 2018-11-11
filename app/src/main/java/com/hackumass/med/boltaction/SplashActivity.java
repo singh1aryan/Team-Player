@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
 
     public void onAnimationEnd(Animation animation) {
         // Start Main Screen
-        Intent i = new Intent(SplashActivity.this, IntroActivity.class);
+        Intent i = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(i);
         this.finish();
     }

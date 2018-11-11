@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BoltAction.iml" filepath="$PROJECT_DIR$/BoltAction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HERE-sdk/HERE-sdk.iml" filepath="$PROJECT_DIR$/HERE-sdk/HERE-sdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

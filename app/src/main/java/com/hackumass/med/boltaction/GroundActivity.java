@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hackumass.med.boltaction.Soccer.Ground;
 import com.hackumass.med.boltaction.Soccer.Player;
 import com.hackumass.med.boltaction.Soccer.PlayerList;
 
@@ -94,10 +95,32 @@ public class GroundActivity extends AppCompatActivity {
 
     private void saveTrack() {
 
+        Intent i = new Intent(GroundActivity.this,IntroActivity.class);
+        startActivityForResult(i,8);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 8){
             String id  = playersDatabase.push().getKey();
-            Player player = new Player("Ayush", "19", "4",id);
-        playersDatabase.child(id).setValue(player);
-            Toast.makeText(this, "Player Added", Toast.LENGTH_LONG).show();
+            String name = data.getStringExtra("name");
+            String age = data.getStringExtra("age");
+            String level = data.getStringExtra("level");
+
+            // sql data for personal use, one one user
+            // push the data into sql database
+            // check if it is empty or not
+            // if it is not empty them disable the click button
+            // if wants to delete, then delete the sql data
+
+//            Player player = new Player("Ayush", "19", "4",id);
+//            playersDatabase.child(id).setValue(player);
+//            Toast.makeText(this, "Player Added", Toast.LENGTH_LONG).show();
+
+        }
 
     }
 }

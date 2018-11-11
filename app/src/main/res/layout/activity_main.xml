@@ -22,8 +22,8 @@
             android:id="@+id/soccer"
             android:layout_width="160dp"
             android:backgroundTint="@color/colorPrimary"
-            android:elevation="20dp"
-            app:cardElevation="20dp"
+            android:elevation="10dp"
+            app:cardElevation="10dp"
             android:layout_height="180dp"
             android:layout_margin="10dp">
             <LinearLayout
@@ -47,6 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#FFFFFF"
+                    android:focusable="false"
                     android:layout_margin="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -65,8 +66,8 @@
             android:layout_width="160dp"
             android:layout_height="180dp"
             android:backgroundTint="@color/colorPrimary"
-            android:elevation="20dp"
-            app:cardElevation="20dp"
+            android:elevation="10dp"
+            app:cardElevation="10dp"
             android:layout_margin="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,6 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#FFFFFF"
+                    android:focusable="false"
                     android:layout_margin="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -115,9 +117,8 @@
             android:layout_width="160dp"
             android:layout_height="180dp"
             android:backgroundTint="@color/colorPrimary"
-            android:elevation="20dp"
-            app:cardElevation="20dp"
-            android:onClick="aboutUs"
+            android:elevation="10dp"
+            app:cardElevation="10dp"
             android:layout_margin="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -127,7 +128,7 @@
                 <ImageView
                     android:layout_width="44dp"
                     android:layout_height="44dp"
-                    android:background="@drawable/crick"
+                    android:background="@drawable/badm"
                     android:padding="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -135,10 +136,11 @@
                     android:textStyle="bold"
                     android:textColor="#FFFFFF"
                     android:layout_marginTop="10dp"
-                    android:text="Cricket"/>
+                    android:text="Badminton"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:focusable="false"
                     android:background="#FFFFFF"
                     android:layout_margin="10dp"/>
                 <TextView
@@ -158,8 +160,8 @@
             android:layout_width="160dp"
             android:layout_height="180dp"
             android:backgroundTint="@color/colorPrimary"
-            android:elevation="20dp"
-            app:cardElevation="20dp"
+            android:elevation="10dp"
+            app:cardElevation="10dp"
             android:layout_margin="10dp">
 
             <LinearLayout
@@ -171,7 +173,7 @@
                 <ImageView
                     android:layout_width="44dp"
                     android:layout_height="44dp"
-                    android:background="@drawable/backet"
+                    android:background="@drawable/ball2"
                     android:padding="10dp" />
 
                 <TextView
@@ -186,6 +188,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
+                    android:focusable="false"
                     android:background="#FFFFFF" />
 
                 <TextView
@@ -211,10 +214,10 @@
             android:clickable="true"
             android:layout_width="340dp"
             android:layout_height="150dp"
-            android:onClick="profile"
             android:backgroundTint="@color/colorPrimary"
-            android:elevation="20dp"
-            app:cardElevation="20dp"
+            android:elevation="0dp"
+            android:onClick="profile"
+            app:cardElevation="0dp"
             android:layout_margin="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -232,17 +235,18 @@
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:textColor="#FFFFFF"
-                    android:text="Play with friends"/>
+                    android:text="Manage your profile"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#FFFFFF"
+                    android:focusable="false"
                     android:layout_margin="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Invite your friends"
+                    android:text="Dont forget to play!"
                     android:padding="5dp"
                     android:textColor="#FFFFFF"
 
