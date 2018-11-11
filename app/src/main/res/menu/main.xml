@@ -5,7 +5,7 @@
     <item android:id="@+id/action_search"
           android:title="Search"
           android:icon="@drawable/search"
-          app:showAsAction="collapseActionView|ifRoom"
+        app:showAsAction="always"
           app:actionViewClass="android.support.v7.widget.SearchView"/>
     <!--<item android:id="@+id/action_notifications"-->
           <!--android:title="@string/action_notifications"-->
