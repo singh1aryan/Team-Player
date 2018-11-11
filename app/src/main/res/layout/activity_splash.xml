@@ -12,15 +12,15 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/bat"
             android:layout_gravity="center"/>
 
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/ball1"
             android:layout_gravity="center"/>
 
@@ -31,16 +31,16 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/ball"
             android:layout_gravity="center"/>
 
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/bat"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/badm"
             android:layout_gravity="center"/>
 
     </LinearLayout>

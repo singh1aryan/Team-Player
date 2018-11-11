@@ -21,9 +21,9 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/bat1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/lifestyle"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"/>
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="Gender: "
+                    android:text="Gender: Male "
                     android:textSize="16sp" />
 
 

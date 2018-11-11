@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/activity_item_details"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
+    android:weightSum="10"
+    >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical">
+            <ImageView
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/image1"
+                android:src="@drawable/carousel"
+                android:layout_width="match_parent"
+                android:layout_height="200.0dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:weightSum="3">
+
+                <LinearLayout android:id="@+id/layout_action1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="share"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView android:id="@+id/text_action1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:text="Share"
+                        android:drawableLeft="@drawable/share"
+                        android:drawablePadding="5dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/gen_black"
+                        android:gravity="left"/>
+                </LinearLayout>
+
+                <View android:layout_width="@dimen/view_width_small"
+                    android:layout_height="match_parent"
+                    android:background="@color/grey_light"/>
+
+                <EditText
+                    android:id="@+id/search"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout android:id="@+id/layout_action2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="similar"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView android:id="@+id/text_action2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:text="Similar"
+                        android:drawableLeft="@drawable/similar"
+                        android:drawablePadding="5dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/gen_black"
+                        android:gravity="left"/>
+                </LinearLayout>
+
+                <View android:layout_width="@dimen/view_width_small"
+                    android:layout_height="match_parent"
+                    android:background="@color/grey_light"/>
+
+                <LinearLayout android:id="@+id/layout_action3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:id="@+id/like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:text="Wishlist"
+                        android:onClick="like"
+                        android:textSize="12dp"
+                        android:drawableLeft="@drawable/like"
+                        android:drawablePadding="5dp"
+                        android:textColor="@color/gen_black"
+                        android:gravity="left"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:layout_width="match_parent"
+                android:layout_height="@dimen/view_width_small"
+                android:background="@color/grey_light"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:text="Grounds Available"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Details"
+                    android:textSize="16dp"
+                    android:textColor="@color/gen_black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="\u2022 Regular fit, full sleeve"
+                    android:textSize="12dp"
+                    android:textColor="@color/gen_black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="\u2022 Fabric: Cotton"
+                    android:textSize="12dp"
+                    android:textColor="@color/gen_black"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="\u2022 Pattern: printed"
+                    android:textSize="12dp"
+                    android:textColor="@color/gen_black"/>
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listViewPlayers"
+                android:layout_width="match_parent"
+                android:layout_height="500dp">
+
+            </ListView>
+
+        </LinearLayout>
+</LinearLayout>

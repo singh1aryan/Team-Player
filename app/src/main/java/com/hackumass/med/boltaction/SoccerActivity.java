@@ -61,7 +61,7 @@ public class SoccerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_soccer);
+        setContentView(R.layout.activity_soccer2);
         getSupportActionBar().setTitle("Soccer Grounds");
 
         listViewGrounds = findViewById(R.id.listViewPlayers);
@@ -71,13 +71,13 @@ public class SoccerActivity extends AppCompatActivity {
         groundsDatabase = FirebaseDatabase.getInstance().getReference("Grounds");
 //        groundsDatabase = playersDatabase.child("Soccer_fields");
 
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addGround();
-            }
-        });
+//        button = findViewById(R.id.button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                addGround();
+//            }
+//        });
 
         listViewGrounds.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -90,7 +90,9 @@ public class SoccerActivity extends AppCompatActivity {
 
                 //putting artist name and id to intent
                 intent.putExtra("id", ground.id);
-                intent.putExtra("name", ground.name);
+                intent.putExtra("ground", ground.name);
+                intent.putExtra("time", ground.time);
+                intent.putExtra("cap", ground.capacity);
 
                 //starting the activity with intent
                 startActivity(intent);
@@ -320,5 +322,22 @@ public class SoccerActivity extends AppCompatActivity {
             startActivity(new Intent(SoccerActivity.this,SearchActivity.class));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void share(View view){
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,
+                "Hey ! Wanna go to the field for some soccer ? ");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
+    }
+
+    public void similar(View view){
+        finish();
+    }
+
+    public void like(View view){
+        Toast.makeText(getApplicationContext(),"Added to wishlist",Toast.LENGTH_LONG).show();
     }
 }
