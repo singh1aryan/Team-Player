@@ -16,7 +16,7 @@ The APIs offered different services rather than products or data, which made it 
 ## What I learned
 Basics of APIs like twilio, clarifai, algolia along with how to integrate with the firebase realtime database .
 
-## What's next for BoltAction
+## What's next for Team Player
 Connecting with nearby grounds and fields for better integration.
 Integrating twilio more for messaging with friends and chatbot.
 Add grounds or working paces and then Challenge your friends. 
